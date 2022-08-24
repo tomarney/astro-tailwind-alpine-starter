@@ -1,0 +1,20 @@
+{
+  "name": "astro-tailwind-alpine-starter",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "alpinejs": "^3.10.3"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^1.0.0",
+    "@types/alpinejs": "^3.7.0",
+    "astro": "^1.0.8"
+  }
+}

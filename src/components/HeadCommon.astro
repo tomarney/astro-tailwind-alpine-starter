@@ -1,0 +1,26 @@
+---
+import '../styles/main.css';
+---
+
+{/* Global Metadata */}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content={Astro.generator} />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<link rel="sitemap" href="/sitemap.xml" />
+
+{/* Preload Fonts */}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,200;0,400;0,500;1,200;1,400&display=swap" rel="stylesheet">
+
+{/* This is intentionally inlined to avoid FOUC */}
+<script is:inline>
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  document.documentElement.classList.add('dark')
+} else {
+  document.documentElement.classList.remove('dark')
+}
+</script>

@@ -1,0 +1,59 @@
+---
+import Logo from "./SVG/Logo.astro";
+const currentPage = Astro.url.pathname;
+
+import { SITE } from "../config";
+---
+
+<header>
+  <nav
+    title="Main Navigation"
+    class="flex flex-wrap justify-between"
+    x-data="{ open: false }"
+  >
+    <a class="grid items-center h-14 lg:h-12 basis-1/2" href="/">
+      <Logo size={40} />
+    </a>
+
+    <button
+      x-on:click="open = ! open"
+      class="basis-1/2 h-14 lg:hidden flex flex-row-reverse items-center"
+      x-bind:aria-label="open?'Close navigation menu':'Open navigation menu'"
+      x-cloak
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        class="max-h-full max-w-full"
+      >
+        <g fill="none" stroke="#000" stroke-linecap="round" stroke-width="2">
+          <path x-show="open" d="M19 1 1 19M1 1l18 18"></path>
+          <path x-show="!open" d="M1 19h18M1 10h18M1 1h18"></path>
+        </g>
+      </svg>
+    </button>
+
+    <div x-bind:class="!open ? 'hidden' : 'block'" x-cloak>
+      <ul class="flex flex-col lg:flex-row gap-6">
+        {
+          SITE.navItems.map((item) => {
+            if (item.hide) return null;
+            else
+              return (
+                <li class={ item.url == currentPage ? 'font-bold' : ''}>
+                  <a
+                    href={item.url}
+                    title={item.hoverText}
+                    x-on:click="open = false"
+                  >
+                    {item.displayText}
+                  </a>
+                </li>
+              );
+          })
+        }
+      </ul>
+    </div>
+  </nav>
+</header>
